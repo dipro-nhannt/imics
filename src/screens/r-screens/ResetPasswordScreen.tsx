@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-export default function SettingScreen() {
+export default function ResetPasswordScreen() {
   return (
     <View>
-      <Text>Setting</Text>
+      <Text>ResetPasswordScreen</Text>
     </View>
   );
 }
