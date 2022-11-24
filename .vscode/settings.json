@@ -47,8 +47,7 @@
   "editor.formatOnSave": true,
   "typescript.format.semicolons": "insert",
   "editor.suggest.showReferences": false,
-  "java.configuration.updateBuildConfiguration": "disabled",
   "cSpell.words": [
     "Chojohigashimachi"
-  ]
+  ],
 }

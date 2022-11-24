@@ -39,6 +39,7 @@ export function Root() {
   }, []);
 
   const { width, height } = useScreenUtils();
+
   useEffect(() => {
     setWidth(width);
     setHeight(height);

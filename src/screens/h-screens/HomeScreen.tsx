@@ -7,4 +7,4 @@ export default function HomeScreen() {
       <Text>Home</Text>
     </View>
   );
-}
+} 
