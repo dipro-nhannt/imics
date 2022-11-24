@@ -1,0 +1,37 @@
+{
+  "New Component": {
+    "prefix": "new component",
+    "body": [
+      "import React from \"react\";",
+      "import { View, StyleSheet } from \"react-native\";",
+      "",
+      "interface I${TM_FILENAME_BASE}Props {",
+      "}",
+      "",
+      "export function ${TM_FILENAME_BASE}(props: React.PropsWithChildren<I${TM_FILENAME_BASE}Props>) {",
+      "\treturn (",
+      "\t\t<View style={styles.container}>",
+      "\t\t\t<Text>new component</Text>",
+      "\t\t</View>",
+      "\t);",
+      "}",
+      "",
+      "const styles = StyleSheet.create({",
+      "\tcontainer: {",
+      "\t},",
+      "});",
+      ""
+    ],
+    "scope": "typescript,typescriptreact"
+  },
+  "ComponentProps": {
+    "prefix": "new props",
+    "body": [
+      "interface I${1:$TM_FILENAME_BASE}Props {",
+      "\t$0",
+      "}",
+      ""
+    ],
+    "scope": "typescript, typescriptreact"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "eamodio.gitlens",
+        "mike-co.import-sorter",
+        "microfe.export-to-index",
+        "dbaeumer.vscode-eslint",
+        "Gruntfuggly.triggertaskonsave",
+        "streetsidesoftware.code-spell-checker",
+        "msjsdiag.vscode-react-native",
+        "rbbit.typescript-hero"
+    ]
+}

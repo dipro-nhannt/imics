@@ -1,0 +1,67 @@
+{
+  "Interface": {
+    "prefix": "interface",
+    "body": [
+      "interface I${1:$TM_FILENAME_BASE} {",
+      "\t$0",
+      "}",
+      ""
+    ],
+    "scope": "typescript, typescriptreact"
+  },
+  "Export Interface": {
+    "prefix": "export interface",
+    "body": [
+      "export interface I${1:$TM_FILENAME_BASE} {",
+      "\t$0",
+      "}",
+      ""
+    ],
+    "scope": "typescript, typescriptreact"
+  },
+  "Export Arrow With Args": {
+    "prefix": "export arrow with args",
+    "body": [
+      "export interface I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Args {",
+      "\t",
+      "}",
+      "",
+      "export const ${1:$TM_FILENAME_BASE} = (args: I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Args) => {",
+      "\t$0",
+      "}",
+      ""
+    ],
+    "scope": "typescript"
+  },
+  "New Request": {
+    "prefix": "new request",
+    "body": [
+      "export interface I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Request {",
+      "\tid: number;",
+      "\tquery?: any;",
+      "\tbody?: any;",
+      "}",
+      "",
+      "export interface I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Response {",
+      "",
+      "}",
+      "",
+      "export const ${1/^(.)(.*)$/${1:/camelcase}${2}/}Request = async (${1/^(.)(.*)$/${1:/camelcase}${2}/}Info: I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Request) => {",
+      "\tconst response = await customFetch(",
+      "\t\tparseUrl({",
+      "\t\t\tpath: \"/${1/^(.)(.*)$/${1:/camelcase}${2}/}/:id\",",
+      "\t\t\tpathData: { id: ${1/^(.)(.*)$/${1:/camelcase}${2}/}Info.id },",
+      "\t\t\tquery: ${1/^(.)(.*)$/${1:/camelcase}${2}/}Info.query",
+      "\t\t}),",
+      "\t\t{",
+      "\t\t\tmethod: \"POST\",",
+      "\t\t\tbody: JSON.stringify(${1/^(.)(.*)$/${1:/camelcase}${2}/}Info)",
+      "\t\t}",
+      "\t);",
+      "",
+      "\treturn getResponseValue<I${1/^(.)(.*)$/${1:/pascalcase}${2}/}Response>({ response });",
+      "};"
+    ],
+    "scope": "typescript"
+  }
+}
