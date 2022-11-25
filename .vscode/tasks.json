@@ -5,7 +5,7 @@
   "tasks": [
     {
       "label": "export-to-index",
-      "command": "${command:extension.exportToIndexFile}",
+      "command": "${command:extension.addCurrentFileExportationToIndex}",
     }
   ]
 }
