@@ -13,19 +13,20 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import { ic_modal_close, ic_pink_close } from '@/assets';
+import { ic_close_popup } from '@/assets';
 import {
-  appTheme,
+  appThemes,
   height,
+  IDimension,
   normalize,
   pixelToDpiH,
   pixelToDpiW,
   width,
 } from '@/helpers';
-import { IDimension } from '@/utils';
 
-import { CustomButton } from '../common';
-import { CustomScrollView, StyledText, StyledView } from '../display';
+// import { IDimension } from '@/utils';
+import { ButtonCustom } from '../buttons';
+import { ScrollViewCustom, TextStyled, ViewStyled } from '../elements';
 
 const events = new EventEmitter();
 
@@ -34,7 +35,6 @@ interface IGlobalModalProps {
   closeEventKey: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function GlobalModal(props: IGlobalModalProps) {
   const [prevVisible, setPrevVisible] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -98,6 +98,7 @@ export function GlobalModal(props: IGlobalModalProps) {
 
   useEffect(
     () => {
+      // eslint-disable-next-line @typescript-eslint/no-shadow
       const onShowModal = (props: IShowModalProps) => {
         setPrevVisible(false);
         setVisible(true);
@@ -131,7 +132,7 @@ export function GlobalModal(props: IGlobalModalProps) {
         animationType="fade"
         transparent={true}
       >
-        <CustomScrollView
+        <ScrollViewCustom
           keyboardVerticalOffsetIOS={0}
         >
           <TouchableOpacity
@@ -139,7 +140,7 @@ export function GlobalModal(props: IGlobalModalProps) {
             onPress={() => toggleVisible()}
             style={styles.overflow}
           />
-          <StyledView
+          <ViewStyled
             style={[
               styles.wrapperContainer,
               dimension.height < height * 0.6
@@ -152,57 +153,57 @@ export function GlobalModal(props: IGlobalModalProps) {
             ]}
           >
             <View onLayout={(event) => setDimension(event.nativeEvent.layout)} style={[styles.centeredView]}>
-              <StyledView style={styles.modalContent} width={modalProps.width ?? 300}>
-                <StyledView style={[!modalProps.title && styles.headerNoTitle, modalProps.headerStyle]}>
+              <ViewStyled style={styles.modalContent} width={modalProps.width ?? 300}>
+                <ViewStyled style={[!modalProps.title && styles.headerNoTitle, modalProps.headerStyle]}>
                   {modalProps.styleWrapIcon && (
-                    <StyledView style={[styles.closeContainer, modalProps.styleWrapIcon]}>
+                    <ViewStyled style={[styles.closeContainer, modalProps.styleWrapIcon]}>
                       <TouchableOpacity onPress={toggleVisible}>
                         <Image
-                          source={modalProps.isSlideDown ? ic_pink_close : ic_modal_close}
+                          source={modalProps.isSlideDown ? ic_close_popup : ic_close_popup}
                           style={[styles.closeIcon, modalProps.styleIcon]} />
                       </TouchableOpacity>
-                    </StyledView>
+                    </ViewStyled>
                   )}
                   {
                     modalProps.title && (
-                      <StyledView alignItems="center">
-                        <StyledText
+                      <ViewStyled alignItems="center">
+                        <TextStyled
                           presets={['big', modalProps.colorTitle === 'primary' ? 'primary' : 'default']}
-                          {...(modalProps.titleStyle ?? styles.defaultTitle)}
+                        // {...(modalProps.titleStyle ?? styles.defaultTitle)}
                         >
                           {modalProps.title}
-                        </StyledText>
-                      </StyledView>
+                        </TextStyled>
+                      </ViewStyled>
                     )
                   }
-                </StyledView>
-                <StyledView>
+                </ViewStyled>
+                <ViewStyled>
                   {modalProps.body}
-                </StyledView>
-                <StyledView style={modalProps.textButtonBack ?? modalProps.textButtonOke ? styles.wrapPopup : {}}>
+                </ViewStyled>
+                <ViewStyled style={modalProps.textButtonBack ?? modalProps.textButtonOke ? styles.wrapPopup : {}}>
                   {modalProps.textButtonBack && (
-                    <StyledView width={120} height={40}>
-                      <CustomButton
+                    <ViewStyled width={120} height={40}>
+                      <ButtonCustom
                         title={modalProps.textButtonBack}
                         onPress={toggleVisible}
                         textStyle={styles.txtButtonSolid}
                       />
-                    </StyledView>
+                    </ViewStyled>
                   )}
                   {modalProps.textButtonOke && (
-                    <StyledView width={120} height={40}>
-                      <CustomButton
+                    <ViewStyled width={120} height={40}>
+                      <ButtonCustom
                         title={modalProps.textButtonOke}
                         onPress={modalProps.handleButtonOke}
                         color={'primary'}
                       />
-                    </StyledView>
+                    </ViewStyled>
                   )}
-                </StyledView>
-              </StyledView>
+                </ViewStyled>
+              </ViewStyled>
             </View>
-          </StyledView>
-        </CustomScrollView>
+          </ViewStyled>
+        </ScrollViewCustom>
       </Modal>
     </>
   );
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
   txtButtonSolid: {
     marginHorizontal: 12,
     fontWeight: '500',
-    color: appTheme.colors.text.textColorPrimary,
+    color: appThemes.colors.text.textPrimary,
     fontSize: normalize(14),
   },
   closeContainer: {

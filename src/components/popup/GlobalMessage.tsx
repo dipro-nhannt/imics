@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-import { pixelToDpiH, themeColors, width } from '@/helpers';
+import { appColors, appThemes, pixelToDpiH, width } from '@/helpers';
 
-import { StyledText } from '../display';
+import { TextStyled } from '../elements';
 import { closeSecondaryModal, showSecondaryModal } from './GlobalModal';
 
 interface IGlobalMessage {
@@ -33,7 +33,7 @@ export const showGlobalMessage = (props: IGlobalMessage) => {
       closeSecondaryModal();
     },
     body: typeof props.body === 'string'
-      ? <StyledText>{props.body}</StyledText>
+      ? <TextStyled>{props.body}</TextStyled>
       : props.body,
   });
 };
@@ -44,10 +44,10 @@ export const hideGlobalMessage = () => {
 
 const styles = StyleSheet.create({
   iconClose: {
-    tintColor: themeColors.white,
+    tintColor: appColors.whitePrimary,
   },
   wrapIconClose: {
-    backgroundColor: themeColors.txtPrimary,
+    backgroundColor: appThemes.colors.background.backgroundPrimary,
     borderRadius: 12,
     width: 24,
     height: 24,

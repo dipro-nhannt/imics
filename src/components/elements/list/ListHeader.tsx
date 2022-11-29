@@ -1,7 +1,7 @@
-import React from "react";
-import { ImageRequireSource, StyleSheet, View } from "react-native";
-import { Text } from "react-native-elements";
-import { Image } from "react-native-elements/dist/image/Image";
+import React from 'react';
+import { ImageRequireSource, StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-elements';
+import { Image } from 'react-native-elements/dist/image/Image';
 
 interface IListHeaderProps {
   icon?: ImageRequireSource;
@@ -25,22 +25,22 @@ export function ListHeader(props: React.PropsWithChildren<IListHeaderProps>) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F8F8F8",
+    backgroundColor: '#F8F8F8',
     paddingLeft: 15,
     paddingTop: 8,
     paddingBottom: 8,
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center"
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
-    color: "#838282",
+    color: '#838282',
     fontSize: 14,
-    lineHeight: 22
+    lineHeight: 22,
   },
   icon: {
     width: 16,
     height: 16,
     marginRight: 16,
-  }
+  },
 });

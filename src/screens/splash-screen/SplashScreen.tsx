@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export function SplashScreen() {
   return (
     <View style={styles.container}>
-      <Text>new component</Text>
+      <Text>SplashScreen</Text>
     </View>
   );
 }

@@ -1,17 +1,15 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle } from 'react-native';
 
-import { appColors, appThemes } from '@/helpers';
-import { appFonts } from '@/utils';
+import { appFonts } from '@/constants';
+import { appThemes } from '@/helpers';
 
 type TextStylePreset = undefined
   | 'default'
   | 'subtitle'
-  | 'subtitle2'
   | 'error'
   | 'warning'
   | 'primary'
-  | 'primary2'
   | 'smallest'
   | 'bold'
   | 'medium'
@@ -26,11 +24,11 @@ type ITextStyledProps = StyleProp<TextStyle> & {
 };
 
 const getFontMyWeight = (weight?: string | number) => {
-  if (weight === 500 || weight === '500' || weight == 'medium') {
+  if (weight === 500 || weight === '500' || weight === 'medium') {
     return appFonts.medium;
   }
 
-  if (weight === 700 || weight === '700' || weight == 'bold') {
+  if (weight === 700 || weight === '700' || weight === 'bold') {
     return appFonts.bold;
   }
 
@@ -51,27 +49,19 @@ const getPresetStyle = (presets?: TextStylePreset | TextStylePreset[]): StylePro
         ...style as any,
         fontSize: 12,
         lineHeight: 20,
-        color: appColors.textColorForeign,
-      };
-    }
-    else if (preset === 'subtitle2') {
-      style = {
-        ...style as any,
-        fontSize: 12,
-        lineHeight: 20,
-        color: appColors.textColor,
+        color: appThemes.colors.text.textPrimary,
       };
     }
     else if (preset === 'error') {
       style = {
         ...style as any,
-        color: appColors.textColorError,
+        color: appThemes.colors.text.textError,
       };
     }
     else if (preset === 'primary') {
       style = {
         ...style as any,
-        color: appColors.textColorPrimary,
+        color: appThemes.colors.text.textPrimary,
       };
     }
     else if (preset === 'bold') {
@@ -88,7 +78,6 @@ const getPresetStyle = (presets?: TextStylePreset | TextStylePreset[]): StylePro
         lineHeight: 24,
       };
     }
-
     else if (preset === 'big') {
       style = {
         ...style as any,
@@ -111,13 +100,7 @@ const getPresetStyle = (presets?: TextStylePreset | TextStylePreset[]): StylePro
     else if (preset === 'secondary') {
       style = {
         ...style as any,
-        color: appColors.textColorForeign,
-      };
-    }
-    else if (preset === 'primary2') {
-      style = {
-        ...style as any,
-        color: appColors.textColorPrimary2,
+        color: appThemes.colors.text.textPrimary,
       };
     }
   }

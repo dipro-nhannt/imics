@@ -52,6 +52,7 @@ export const appThemes = {
     background: {
       backgroundPrimary: appColors.whiteDark,
       backgroundWhite: appColors.whitePrimary,
+      buttonPrimary: appColors.bluePrimary,
     },
     border: {
       borderPrimary: appColors.grayDark,

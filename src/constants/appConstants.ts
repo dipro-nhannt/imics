@@ -30,7 +30,7 @@ export const env = {
 
 export const APP_SCREEN = 'APP_SCREEN';
 export const AUTH_SCREEN = 'AUTH_SCREEN';
-export const SPLASH_SCREEN = 'START_APP_SCREEN';
+export const SPLASH_SCREEN = 'SPLASH_SCREEN';
 
 export enum AuthScreenNames {
   SIGN_UP_SCREEN = 'SIGN_UP_SCREEN',
@@ -54,4 +54,11 @@ export interface IDeviceToken {
 export type IAppScreens = {
   [key in AppScreenNames]: any;
 };
+
+export const appFonts = {
+  bold: 'NotoSansJP-Bold',
+  medium: 'NotoSansJP-Medium',
+  regular: 'NotoSansJP-Regular',
+};
+
 export type AppNavigationProp = NavigationProp<IAppScreens>;

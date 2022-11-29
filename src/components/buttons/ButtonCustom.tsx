@@ -10,7 +10,6 @@ import {
   View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import LinearGradient from 'react-native-linear-gradient';
 
 import { TextStyled, ViewStyled } from '@/components/elements';
 import { appColors, appThemes, normalize } from '@/helpers';
@@ -35,8 +34,7 @@ interface ICustomButtonProps extends ButtonProps {
   containerBtnStyle?: object;
 }
 
-// eslint-disable-next-line max-lines-per-function
-export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonProps>) => {
+export const ButtonCustomComp = (props: React.PropsWithChildren<ICustomButtonProps>) => {
   const {
     title,
     onPress,
@@ -97,7 +95,7 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
             {iconLeft && (
               <>
                 <ViewStyled marginLeft={32} marginRight={16}>
-                  <FastImage width={50} height={50} source={iconLeft} style={buttonStyles.iconButton} />
+                  <FastImage source={iconLeft} width={50} height={50} style={buttonStyles.iconButton} />
                 </ViewStyled>
 
                 <ViewStyled flex={1}>
@@ -137,8 +135,8 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
   const renderGradient = useCallback(
     () => {
       const gradientProps = {
-        colors: disabled ? appThemes.colors.gradients.disable : appThemes.colors.gradients.primary,
-        locations: disabled ? appThemes.colors.gradients.noneLocation : appThemes.colors.gradients.primaryLocation,
+        colors: disabled ? appThemes.colors.black : appThemes.colors.white,
+        locations: disabled ? appThemes.colors.black : appThemes.colors.white,
       };
 
       const sizeStyle = props.size === 'large'
@@ -152,12 +150,7 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
               : buttonStyles.buttonSizeDefault;
 
       return (
-        <LinearGradient
-          start={{ x: 0.0, y: 0.0 }}
-          end={{ x: 1.0, y: 1.0 }}
-          useAngle={true}
-          angle={90.78}
-          angleCenter={{ x: 0.35, y: 0.25 }}
+        <View
           {...gradientProps}
           style={[
             buttonStyles.buttonDefault,
@@ -175,7 +168,7 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
               :
               buttonContent
           }
-        </LinearGradient>
+        </View>
       );
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -222,7 +215,7 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
           {
             isLoading
               ? <Loading
-                color={props.color !== 'primary' ? appColors.primary : appColors.white}
+                color={props.color !== 'primary' ? appColors.redPrimary : appColors.whitePrimary}
               />
               : buttonContent
           }
@@ -248,7 +241,7 @@ export const CustomButtonComp = (props: React.PropsWithChildren<ICustomButtonPro
   );
 };
 
-export const CustomButton = React.memo(CustomButtonComp);
+export const ButtonCustom = React.memo(ButtonCustomComp);
 
 const styles = StyleSheet.create({
   wrapLoading: {

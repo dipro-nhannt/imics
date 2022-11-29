@@ -2,8 +2,8 @@ import React from 'react';
 
 import { width } from '@/helpers';
 
-import { CustomButton } from '../common';
-import { StyledText, StyledView } from '../display';
+import { ButtonCustom } from '../buttons';
+import { TextStyled, ViewStyled } from '../elements';
 import { closeSecondaryModal, showSecondaryModal } from './GlobalModal';
 
 interface IGlobalNotification {
@@ -14,8 +14,8 @@ interface IGlobalNotification {
 }
 
 export const showGlobalNotification = (props: IGlobalNotification) => {
-  const defaultTitle = translate('modal.notification.title');
-  const defaultOkTitle = translate('modal.notification.button');
+  const defaultTitle = 'お知らせ';
+  const defaultOkTitle = '閉じる';
 
   showSecondaryModal({
     top: 0,
@@ -27,14 +27,14 @@ export const showGlobalNotification = (props: IGlobalNotification) => {
     },
     onClose: props.onClose,
     body: (
-      <StyledView justifyContent="center" alignItems="center">
-        <StyledView marginBottom={22.67} alignItems="center">
-          <StyledText textAlign="center">
+      <ViewStyled justifyContent="center" alignItems="center">
+        <ViewStyled marginBottom={22.67} alignItems="center">
+          <TextStyled textAlign="center">
             {props.content}
-          </StyledText>
-        </StyledView>
-        <StyledView width={120}>
-          <CustomButton
+          </TextStyled>
+        </ViewStyled>
+        <ViewStyled width={120}>
+          <ButtonCustom
             onPress={() => {
               closeSecondaryModal();
             }}
@@ -42,8 +42,8 @@ export const showGlobalNotification = (props: IGlobalNotification) => {
             title={props.title ?? defaultOkTitle}
             color={'primary'}
           />
-        </StyledView>
-      </StyledView>
+        </ViewStyled>
+      </ViewStyled>
     ),
   });
 };
