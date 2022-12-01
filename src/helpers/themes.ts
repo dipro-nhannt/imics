@@ -1,11 +1,14 @@
 import { Theme } from '@react-navigation/native';
 
+import { appFonts } from '@/constants';
+
 export const appColors = {
   whitePrimary: '#FFF', //white
   whiteDark: '#DFDEDE',
   bluePrimary: '#6290F2', //blue
   blueLight: '#EFF4FE',
   greenPrimary: '#06C755', //green
+  greenDark: '#39AA66',
   redPrimary: '#F21D1D', //red
   blackPrimary: '#1A1D28', //black
   blackDark: '#0B0E1F',
@@ -14,8 +17,8 @@ export const appColors = {
   grayDark: '#DFE0E2',
   yellowPrimary: '#E4A72F', //yellow
   yellowLight: '#FFF2D9',
-  pinkPrimary: '#FC69B8', //pink
-  pinkLight: '#FFEBF6',
+  pinkPrimary: '#E94459', //pink
+  pinkLight: '#FAF4F4',
 };
 
 export const gradientPrimary = ['#6290F2', '#6290F2', '#06C755'];
@@ -69,8 +72,8 @@ export const appThemes = {
     largeSpacing: 20,
   },
   fonts: {
-    regular: 'NotoSansJP-Regular',
-    medium: 'NotoSansJP-Medium',
-    bold: 'NotoSansJP-Bold',
+    regular: appFonts.regular,
+    medium: appFonts.medium,
+    bold: appFonts.bold,
   },
 };

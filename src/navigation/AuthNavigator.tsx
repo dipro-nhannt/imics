@@ -3,9 +3,9 @@ import React, { useEffect } from 'react';
 import { useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { AuthScreenNames, SPLASH_SCREEN } from '@/constants';
+import { AuthScreenNames } from '@/constants';
 import { IScreenProps } from '@/helpers';
-import { SignInScreen, SignUpScreen, SplashScreen } from '@/screens';
+import { SignInScreen, SignUpScreen } from '@/screens';
 
 import { getScreenOptions } from './_share';
 
@@ -28,18 +28,8 @@ export function AuthNavigator(props: IScreenProps) {
   return (
     <screenStackNavigator.Navigator
       screenOptions={getScreenOptions(theme)}
-      initialRouteName={SPLASH_SCREEN}
+      initialRouteName={AuthScreenNames.SIGN_IN_SCREEN}
     >
-      <screenStackNavigator.Screen
-        name={SPLASH_SCREEN}
-        component={SplashScreen}
-        options={{
-          title: undefined,
-          headerStyle: {
-            height: 0,
-          },
-        }}
-      />
       <screenStackNavigator.Screen
         name={AuthScreenNames.SIGN_IN_SCREEN}
         component={SignInScreen}

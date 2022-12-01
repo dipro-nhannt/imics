@@ -12,13 +12,10 @@ import {
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { NetworkStatusNotify, Notification } from '@/components';
-import { GlobalModal } from '@/components/popup';
 import { appColors, setHeight, setWidth } from '@/helpers';
 import { AppNavigator, AuthNavigator } from '@/navigation';
 
-import { APP_SCREEN, AUTH_SCREEN, SPLASH_SCREEN } from './constants';
-import { SplashScreen } from './screens/splash-screen';
+import { APP_SCREEN, AUTH_SCREEN } from './constants';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,23 +56,17 @@ export function Root() {
           translucent
           backgroundColor="transparent"
         />
-        <Notification>
-          <NavigationContainer theme={navigationTheme} independent>
-            <Stack.Navigator
-              initialRouteName={SPLASH_SCREEN}
-              screenOptions={{
-                headerShown: false,
-              }}
-            >
-              <Stack.Screen name={SPLASH_SCREEN} component={SplashScreen} />
-              <Stack.Screen name={AUTH_SCREEN} component={AuthNavigator} />
-              <Stack.Screen name={APP_SCREEN} component={AppNavigator} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </Notification>
-        <GlobalModal showEventKey="SHOW_PRIMARY_MODAL" closeEventKey="CLOSE_PRIMARY_MODAL" />
-        <GlobalModal showEventKey="SHOW_SECONDARY_MODAL" closeEventKey="CLOSE_SECONDARY_MODAL" />
-        <NetworkStatusNotify />
+        <NavigationContainer theme={navigationTheme} independent>
+          <Stack.Navigator
+            initialRouteName={AUTH_SCREEN}
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name={AUTH_SCREEN} component={AuthNavigator} />
+            <Stack.Screen name={APP_SCREEN} component={AppNavigator} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </QueryClientProvider>
     </RecoilRoot>
   );
